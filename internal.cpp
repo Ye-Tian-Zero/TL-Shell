@@ -4,6 +4,8 @@ void init()
 {
 	get_stdin_fd() = dup(STDIN_FILENO);
 	getPrefix() = updatePrefix();
+	get_alias()["ls"] = "ls --color=auto";
+	get_alias()["grep"] = "grep --color=auto";
 }
 
 int& get_stdin_fd()
@@ -34,4 +36,9 @@ string& getPrefix()
 {
 	static string Prefix;
 	return Prefix;
+}
+
+map<string, string>& get_alias(){
+	static map<string, string> alias;
+	return alias;
 }

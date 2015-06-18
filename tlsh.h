@@ -7,6 +7,7 @@
 #include<queue>
 #include<sys/wait.h>
 #include<unistd.h>
+#include<map>
 #define FILE_MODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)
 using namespace std;
 
@@ -31,5 +32,7 @@ queue<pid_t>& get_pidQueue();
 string& getPrefix();
 
 void divideCommand(vector<string>& Dcommand, const string& command);
+
+map<string,string>& get_alias();
 
 #endif
