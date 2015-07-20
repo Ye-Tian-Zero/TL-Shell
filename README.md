@@ -6,3 +6,4 @@ To compile it, use
 
 "g++ -std=c++11 -o TLSH *.cpp"
 
+or just "make"
