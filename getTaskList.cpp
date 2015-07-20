@@ -5,6 +5,12 @@ void getTaskList(queue<string> & task_queue)
 	while(!task_queue.empty()) task_queue.pop();
 	string command_line;
 	getline(cin, command_line);
+
+	if(cin.eof())
+	{
+		exit(0);
+	}	
+
 	if(command_line.empty())
 		return;
 	auto base_iter = command_line.begin();

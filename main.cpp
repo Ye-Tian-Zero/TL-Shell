@@ -9,7 +9,7 @@ int main()
 	queue<string> task_queue;
 	while(true)
 	{
-		cout << getPrefix();
+		cout << getPrefix() << flush;
 		getTaskList(task_queue);
 		executeTaskList(task_queue);
 	}

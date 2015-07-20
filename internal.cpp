@@ -1,7 +1,16 @@
 #include"tlsh.h"
 
+static void intHandler(int signo)
+{
+	cout << endl;
+	cout << getPrefix() << flush;
+}
+
 void init()
 {
+
+	signal(SIGINT, intHandler);
+
 	get_stdin_fd() = dup(STDIN_FILENO);
 	getPrefix() = updatePrefix();
 	get_alias()["ls"] = "ls --color=auto";

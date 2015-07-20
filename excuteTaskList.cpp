@@ -6,6 +6,7 @@
 #include<algorithm>
 void executeTaskList(queue<string>& task_queue)
 {
+	//cout << "SIZE: " << task_queue.size() << endl;
 	if(task_queue.empty())
 		return;
 	pid_t pid;

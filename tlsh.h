@@ -1,15 +1,19 @@
 #ifndef _TLSH_H_
 #define _TLSH_H_
+
 #include<vector>
 #include<sstream>
 #include<string>
 #include<iostream>
 #include<queue>
 #include<sys/wait.h>
+#include<signal.h>
 #include<unistd.h>
 #include<map>
 #define FILE_MODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)
 using namespace std;
+
+void sigMaskSet(int sig);
 
 void getTaskList(queue<string> & task_stack);
 
