@@ -13,7 +13,13 @@
 #define FILE_MODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)
 using namespace std;
 
-void sigMaskSet(int sig);
+void (*signal_(int signo, void(*func)(int))) (int);
+
+sigset_t sigMaskBlock(int sig);
+
+bool& getIsBack();
+
+void sigMaskSet(sigset_t);
 
 void getTaskList(queue<string> & task_stack);
 
@@ -39,4 +45,9 @@ void divideCommand(vector<string>& Dcommand, const string& command);
 
 map<string,string>& get_alias();
 
+static void intHandler(int signo)
+{
+	cout << endl;
+	cout << getPrefix() << flush;
+}
 #endif

@@ -1,16 +1,15 @@
 #include"tlsh.h"
 
-static void intHandler(int signo)
-{
-	cout << endl;
-	cout << getPrefix() << flush;
-}
 
 void init()
 {
 
-	signal(SIGINT, intHandler);
-
+	if(signal_(SIGINT, intHandler) == SIG_ERR)
+	{
+		cout << "Signal_ Error!" << endl;
+		exit(1);
+	}
+	getIsBack() = false;
 	get_stdin_fd() = dup(STDIN_FILENO);
 	getPrefix() = updatePrefix();
 	get_alias()["ls"] = "ls --color=auto";
@@ -50,4 +49,10 @@ string& getPrefix()
 map<string, string>& get_alias(){
 	static map<string, string> alias;
 	return alias;
+}
+
+bool& getIsBack()
+{
+	static bool IsBack;
+	return IsBack;
 }

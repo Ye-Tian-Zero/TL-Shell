@@ -13,6 +13,13 @@ void executeTaskList(queue<string>& task_queue)
 	string command;
 	vector<string> Dcommand;
 	while(!get_pidQueue().empty()) get_pidQueue().pop();
+
+	if(signal_(SIGINT, SIG_IGN) == SIG_ERR)
+	{
+		cout << "Signal_ Error!" << endl;
+		exit(1);
+	}
+
 	if(task_queue.size() == 1)
 	{
 		command = task_queue.front();
@@ -45,13 +52,8 @@ void executeTaskList(queue<string>& task_queue)
 				chdir(("/home/" + user_name).c_str());
 			}
 			getPrefix() = updatePrefix();
-
-			return;
 		}
-		
-
-
-		if((pid = fork()) == 0)
+		else if((pid = fork()) == 0)
 		{
 			execute(Dcommand);
 			exit(0);
@@ -90,11 +92,8 @@ void executeTaskList(queue<string>& task_queue)
 				chdir(("/home/" + user_name).c_str());
 			}
 			getPrefix() = updatePrefix();
-
-			return;
 		}
-
-		if((pid = fork()) == 0)
+		else if((pid = fork()) == 0)
 		{
 			close(get_pipefd()[0]);
 			if(get_pipefd()[1] != STDOUT_FILENO)
@@ -151,5 +150,12 @@ void executeTaskList(queue<string>& task_queue)
 			waitpid(get_pidQueue().front(), nullptr, 0);
 			get_pidQueue().pop();
 		}
+
+	}
+
+	if(signal_(SIGINT,intHandler) == SIG_ERR)
+	{
+		cout << "Signal_ Error!" << endl;
+		exit(1);
 	}
 }
