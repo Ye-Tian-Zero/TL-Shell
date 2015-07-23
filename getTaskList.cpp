@@ -13,6 +13,17 @@ void getTaskList(queue<string> & task_queue)
 
 	if(command_line.empty())
 		return;
+
+	if(command_line.back() == '&')
+	{
+		getIfDetach() = true;
+		command_line.erase(command_line.end() - 1);
+	}
+	else
+	{
+		getIfDetach() = false;
+	}
+
 	auto base_iter = command_line.begin();
 	for(auto off_iter = command_line.begin(); off_iter != command_line.end(); ++ off_iter )
 	{

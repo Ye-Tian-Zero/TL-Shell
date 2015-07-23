@@ -3,13 +3,12 @@
 
 void init()
 {
-
 	if(signal_(SIGINT, intHandler) == SIG_ERR)
 	{
 		cout << "Signal_ Error!" << endl;
 		exit(1);
 	}
-	getIsBack() = false;
+	getIfDetach() = false;
 	get_stdin_fd() = dup(STDIN_FILENO);
 	getPrefix() = updatePrefix();
 	get_alias()["ls"] = "ls --color=auto";
@@ -51,8 +50,8 @@ map<string, string>& get_alias(){
 	return alias;
 }
 
-bool& getIsBack()
+bool& getIfDetach()
 {
-	static bool IsBack;
-	return IsBack;
+	static bool Detach;
+	return Detach;
 }

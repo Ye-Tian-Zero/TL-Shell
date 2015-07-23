@@ -10,14 +10,16 @@
 #include<signal.h>
 #include<unistd.h>
 #include<map>
+
 #define FILE_MODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)
+
 using namespace std;
 
 void (*signal_(int signo, void(*func)(int))) (int);
 
 sigset_t sigMaskBlock(int sig);
 
-bool& getIsBack();
+bool& getIfDetach();
 
 void sigMaskSet(sigset_t);
 
