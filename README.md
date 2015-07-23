@@ -4,6 +4,8 @@ It supports pipe, simple io redirection, and cd command.
 
 To compile it, use 
 
-"g++ -std=c++11 -o TLSH *.cpp"
+```
+g++ -std=c++11 -o TLSH *.cpp
+```
 
 or just "make"
