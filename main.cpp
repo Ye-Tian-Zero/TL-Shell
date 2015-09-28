@@ -1,8 +1,4 @@
 #include"tlsh.h"
-#include<sys/wait.h>
-#include<cstdlib>
-#include<errno.h>
-#include<cstdio>
 int main()
 {
 	init();

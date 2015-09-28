@@ -3,6 +3,7 @@
 void getTaskList(queue<string> & task_queue)
 {
 	while(!task_queue.empty()) task_queue.pop();
+
 	string command_line;
 	getline(cin, command_line);
 
@@ -18,6 +19,9 @@ void getTaskList(queue<string> & task_queue)
 	{
 		getIfDetach() = true;
 		command_line.erase(command_line.end() - 1);
+
+		if(command_line.empty())
+			return;
 	}
 	else
 	{
@@ -25,6 +29,7 @@ void getTaskList(queue<string> & task_queue)
 	}
 
 	auto base_iter = command_line.begin();
+
 	for(auto off_iter = command_line.begin(); off_iter != command_line.end(); ++ off_iter )
 	{
 		if(*off_iter == '|')
@@ -38,6 +43,7 @@ void getTaskList(queue<string> & task_queue)
 			base_iter = off_iter + 1;
 		}
 	}
+
 	task_queue.push(string(base_iter, command_line.end()));
 	return;
 }
